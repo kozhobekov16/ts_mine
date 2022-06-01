@@ -4,6 +4,7 @@
     padding: 25px;
     border-radius: 14px;
     height: 400px;
+    overflow: auto;
 }
 
 .App .add {
@@ -17,11 +18,12 @@
 }
 
 .noactive {
-    color: red;
+    text-decoration: line-through;
 }
 
 .todos {
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding: 0 8rem;
+    justify-content: space-between;
 }

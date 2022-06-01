@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import TodoList from "./components/TodoList";
 import './App.css';
 import {TodoType} from "./types";
+import {Button, Input} from "@mui/material";
 
 function App() {
     const [text, setText] = useState('')
@@ -33,6 +34,11 @@ function App() {
         setText('')
     }
 
+    const handleKeyEnter: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+        if (e.key === 'Enter') {
+            addTodo()
+        }
+    }
     const removeTodo = (id: number): void => {
         setTodos(todos.filter(item => item.id !== id))
     }
@@ -40,10 +46,19 @@ function App() {
     return (
         <div className="App">
             <div className="add">
-                <input value={text} onChange={inputChange}/>
-                <button onClick={addTodo}>+</button>
+                <Input
+                    defaultValue="Hello world"
+                    value={text}
+                    onChange={inputChange}
+                    placeholder="Type something"
+                    onKeyPress={handleKeyEnter}
+                />
+                <Button variant="contained" onClick={addTodo}>+</Button>
             </div>
-            <TodoList data={todos} removeTodo={removeTodo} handleToggle={handleToggle}/>
+            <TodoList
+                data={todos}
+                removeTodo={removeTodo}
+                handleToggle={handleToggle}/>
         </div>
     );
 }

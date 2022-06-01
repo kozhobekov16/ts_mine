@@ -5,7 +5,7 @@ import TodoItem from "./TodoItem";
 interface TypeTodo {
     data: TodoType[],
     removeTodo: (id: number) => void,
-    handleToggle: (id: number) => void
+    handleToggle: (id: number) => void,
 }
 
 const TodoList: FC<TypeTodo> = ({data, removeTodo, handleToggle}) => {
